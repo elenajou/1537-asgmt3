@@ -1,0 +1,115 @@
+.navbar1 {
+    grid-area: navbar1;
+    background-color: rgb(216, 216, 250);
+    place-self: center;
+}
+
+.navbar2 {
+    grid-area: navbar2;
+    background-color: rgb(216, 216, 250);
+}
+
+.navbar3 {
+    grid-area: navbar3;
+    background-color: rgb(216, 216, 250);
+}
+
+.main-content {
+    grid-area: main-content;
+    background-color: rgb(159, 241, 200);
+}
+
+.subscribe-news {
+    grid-area: subscribe-news;
+    background-color: rgb(206, 175, 241);
+}
+
+.article-picture {
+    height: 100px;
+}
+
+.article-title {
+    height: 100px;
+}
+
+.article-description {
+    height: 300px;
+}
+
+.article {
+    display: inline-block;
+    width: calc(25% - 3px);
+    background-color: rgb(206, 175, 241);
+    justify-items: center;
+}
+
+.container-articles {
+    grid-area: container-articles;
+    background-color: aliceblue;
+}
+
+.container-main {
+    display: grid;
+    grid-template-columns: 25% repeat(4, 1fr);
+    grid-template-rows: 100px 40vw 5vh auto;
+    grid-template-areas:
+        "navbar1 main-content main-content main-content main-content"
+        "navbar2 main-content main-content main-content main-content"
+        "navbar3 subscribe-news subscribe-news subscribe-news subscribe-news"
+        "navbar3 container-articles container-articles container-articles container-articles";
+    gap: 10px;
+    margin: 30px;
+}
+
+@media (max-width: 1281px) {
+    .container-main {
+        grid-template-columns: 25% 1fr;
+        grid-template-rows: 15vw 40vw 5vh 50px auto;
+        grid-template-areas:
+            "navbar1 navbar2"
+            "main-content main-content"
+            "subscribe-news subscribe-news"
+            "container-articles container-articles"
+    }
+
+    .navbar3 {
+        display: none;
+    }
+
+    .navbar2 {
+        justify-self: end;
+        align-self: center;
+    }
+
+    .navbar2 div {
+        display: inline;
+        margin: 2px;
+    }
+}
+
+@media (max-width: 701px) {
+    .container-main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 50px 300px 50px auto;
+        grid-template-areas:
+            "navbar2"
+            "navbar1"
+            "main-content"
+            "subscribe-news"
+            "container-articles"
+    }
+
+    .article {
+        display: block;
+        width: 100%;
+    }
+    
+    .navbar2 {
+        place-self: center;
+    }
+
+    .navbar2 div {
+        display: inline;
+        margin: 2px;
+    }
+}
