@@ -1,12 +1,75 @@
-.navbar1 {
-    grid-area: navbar1;
-    background-color: rgb(216, 216, 250);
-    place-self: center;
+* {
+    font-family: 'Montserrat', sans-serif;
 }
 
+.container-page {
+    display: grid;
+    grid-template-columns: 20% repeat(4, 1fr);
+    grid-template-rows: 300px 300px 100px auto;
+    grid-template-areas:
+        "navbar1 container-main container-main container-main container-main"
+        "navbar2 container-main container-main container-main container-main"
+        "navbar3 subscribe-news subscribe-news subscribe-news subscribe-news"
+        "navbar3 container-articles container-articles container-articles container-articles";
+    gap: 10px;
+    margin: 30px;
+}
+
+.container-main {
+    display: grid;
+    grid-area: container-main;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(12, calc(100% / 12));
+    gap: 0;
+}
+
+.container-articles {
+    grid-area: container-articles;
+}
+
+/************************ Logo Section ************************/
+.navbar1 {
+    grid-area: navbar1;
+    justify-self: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.navbar1 .circle {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 25%;
+    display: block;
+    color: white;
+    font-size: 1.5vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    overflow: hidden;
+}
+
+.navbar1 img {
+    height: 60%;
+    transform: translate(0%, 50%);
+}
+
+.navbar1 .circle div {
+    transform: translate(0%, 175%);
+}
+/************************ End of Logo ************************/
+
+/************************ Socials Section ********************/
 .navbar2 {
     grid-area: navbar2;
-    background-color: rgb(216, 216, 250);
+    padding-left: 5%;
+    padding-top: 5%;
+}
+
+.navbar2 img {
+    height: 40px;
+    transform: translate(0, 40%);
+    margin-right: 5%;
 }
 
 .navbar3 {
@@ -14,14 +77,106 @@
     background-color: rgb(216, 216, 250);
 }
 
-.main-content {
-    grid-area: main-content;
-    background-color: rgb(159, 241, 200);
+/************************ End of SocialsSocials ***************/
+
+/************************ Main Content Section ************************/
+.container-main .main-image {
+    grid-column: 1 / 5;
+    grid-row: 1 / 12;
+    overflow: hidden;
 }
 
+.container-main .main-image img {
+    min-height: 300px;
+    min-width: 150px;
+    width: 100%;
+    transform: translate(0, -15%);
+}
+
+.container-main .label-1 {
+    grid-column: 1 / 2;
+    grid-row: 9 / 10;
+    background-color: white;
+    align-self: stretch;
+    z-index: 0;
+}
+
+.container-main .label-2 {
+    grid-column: 1 / 4;
+    grid-row: 10 / 11;
+    background-color: black;
+    z-index: 0;
+}
+
+.container-main .articles-tab {
+    grid-row: 12 / 13;
+    grid-column: 1 / 5;
+    display: inline-grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "tab1 tab2 tab3 tab4";
+    gap: 0;
+    box-shadow: 3px 5px 5px #c2a98bab;
+}
+
+.container-main .articles-tab .tab {
+    border: #c2a98b44 solid 1px;
+    background-color: #c2a98b44;
+    display: grid;
+}
+
+.container-main .articles-tab .tab1 {
+    grid-area: tab1;
+    background-color: #c2a98b8a;
+}
+
+.container-main .articles-tab .tab2 {
+    grid-area: tab2;
+}
+
+.container-main .articles-tab .tab3 {
+    grid-area: tab3;
+}
+
+.container-main .articles-tab .tab4 {
+    grid-area: tab4;
+}
+
+.container-main .articles-tab .tab .tab-text {
+    place-self: center;
+}
+
+/************************ End of Main Content ************************/
+
+/************************ Body ************************/
 .subscribe-news {
     grid-area: subscribe-news;
-    background-color: rgb(206, 175, 241);
+    align-self: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.subscribe-news > div {
+    grid-column: 1 / 2;
+    display: inline-flex;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.subscribe-news > div > img {
+    height: 50px;
+    width: auto;
+    transform: translate(0, -15%);
+    margin-right: 15px;
+}
+
+.subscribe-news > form {
+    grid-column: 2 / 3;
+    align-self: center; 
+    justify-self: flex-end;
+    display: inline-flex;
 }
 
 .article-picture {
@@ -38,78 +193,171 @@
 
 .article {
     display: inline-block;
-    width: calc(25% - 3px);
+    position: relative;
+    justify-content: stretch;
+    width: calc((100% - 16px) / 4);
     background-color: rgb(206, 175, 241);
-    justify-items: center;
 }
 
-.container-articles {
-    grid-area: container-articles;
-    background-color: aliceblue;
-}
-
-.container-main {
-    display: grid;
-    grid-template-columns: 25% repeat(4, 1fr);
-    grid-template-rows: 100px 40vw 5vh auto;
-    grid-template-areas:
-        "navbar1 main-content main-content main-content main-content"
-        "navbar2 main-content main-content main-content main-content"
-        "navbar3 subscribe-news subscribe-news subscribe-news subscribe-news"
-        "navbar3 container-articles container-articles container-articles container-articles";
-    gap: 10px;
-    margin: 30px;
-}
-
+/************************ End of Body ************************/
 @media (max-width: 1281px) {
-    .container-main {
+    .container-page {
         grid-template-columns: 25% 1fr;
-        grid-template-rows: 15vw 40vw 5vh 50px auto;
+        grid-template-rows: max-content 55vw 80px 50px auto;
         grid-template-areas:
             "navbar1 navbar2"
-            "main-content main-content"
+            "container-main container-main"
             "subscribe-news subscribe-news"
-            "container-articles container-articles"
+            "container-articles container-articles";
+        margin: 2px;
+    }
+
+    /************************ Logo ************************/
+    .navbar1 .circle {
+        font-size: 3vw;
+    }
+    /************************ End of Logo ************************/
+
+    /************************ Socials Section ***************/
+    .navbar2 {
+        display: inline-flex;
+        justify-self: end;
+        align-self: center;
+        padding: 0;
+        max-width: 80%
+    }
+
+    .navbar2 div {
+        display: grid;
+        margin: 1vw;
+    }
+
+    .navbar2 img {
+        justify-self: center;
+        transform: none;
+        margin: 5px 0 5px 0;
+    }
+
+    .navbar2 span {
+        text-align: center;
+        transform: none;
     }
 
     .navbar3 {
         display: none;
     }
 
-    .navbar2 {
-        justify-self: end;
+    /************************ End of Socials ***************/
+
+    /************************ Main Content Section *****************/
+    .container-main main-image img {
+        transform: translate(0%, -20%);
+    }
+
+    .subscribe-news > div > img {
+        transform: none;
+    }
+
+    .subscribe-news > div > div {
         align-self: center;
     }
-
-    .navbar2 div {
-        display: inline;
-        margin: 2px;
-    }
+    /************************ End of Main Content **********/
 }
 
-@media (max-width: 701px) {
-    .container-main {
+@media (max-width: 650px) {
+    .container-page {
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 50px 300px 50px auto;
+        grid-template-rows: 50px 200px 300px 100px auto;
         grid-template-areas:
             "navbar2"
             "navbar1"
-            "main-content"
+            "container-main"
             "subscribe-news"
-            "container-articles"
+            "container-articles";
+    }
+
+    .container-main {
+        grid-template-rows: repeat(11, calc(100% / 11));
+    }
+
+    /************************ Logo Section ************************/
+    .navbar1 {
+        height: 200px;
+        width: auto;
+    }
+
+    .navbar1 .circle {
+        font-size: 120%;
+    }
+    /************************ End of Logo ************************/
+
+    /************************ Socials Section ************************/
+    .navbar2 {
+        justify-content: center;
+        max-width: unset;
+        width: 100%;
+        border-bottom: #c2a98b solid 2px;
+    }
+
+    .navbar2 img {
+        height: 40px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar2 div span {
+        display: none;
+    }
+    /************************ End of Socials ***********************/
+
+    /************************ Main Content Section ************************/
+    .container-main .articles-tab {
+        display: none;
+    }
+    .container-main .main-image img {
+        width: 800px;
+        transform: translate(-20%, -15%);
+    }
+    /************************ End of Main Content ************************/
+
+    /************************ Body Section ************************/
+    .subscribe-news {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 50px;
+        padding: 5px;
+    }
+
+    .subscribe-news > div {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    
+    .subscribe-news > form {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        justify-self: left; 
+        padding-left: 10%;
     }
 
     .article {
         display: block;
         width: 100%;
     }
+}
+
+@media (max-width: 400px) {
+    .container-main .label-1 {
+        grid-column: 1 / 2;
+        grid-row: 8 / 9;
+    }
     
-    .navbar2 {
-        place-self: center;
+    .container-main .label-2 {
+        grid-column: 1 / 4;
+        grid-row: 9 / 10;
     }
 
-    .navbar2 div {
-        display: inline;
-        margin: 2px;
+    .container-main .main-image img {
+        width: 500px;
+        transform: translate(-15%, 0);
     }
 }
