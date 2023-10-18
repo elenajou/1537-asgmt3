@@ -74,7 +74,6 @@
 
 .navbar3 {
     grid-area: navbar3;
-    background-color: rgb(216, 216, 250);
 }
 
 /************************ End of SocialsSocials ***************/
@@ -179,26 +178,29 @@
     display: inline-flex;
 }
 
-.article-picture {
-    height: 100px;
-}
-
-.article-title {
-    height: 100px;
-}
-
-.article-description {
-    height: 300px;
-}
-
 .article {
     display: inline-block;
     position: relative;
     justify-content: stretch;
-    width: calc((100% - 16px) / 4);
-    background-color: rgb(206, 175, 241);
+    width: calc((100% - 94px) / 4);
+    overflow: hidden;
+    margin: 10px;
+    padding: 0;
 }
 
+.article-picture {
+    width: 100%;
+}
+
+.article-title {
+    padding-top: 15px;
+    font-size: larger;
+}
+
+.article-description {
+    padding-top: 15px;
+    height: 300px;
+}
 /************************ End of Body ************************/
 @media (max-width: 1281px) {
     .container-page {
@@ -209,7 +211,7 @@
             "container-main container-main"
             "subscribe-news subscribe-news"
             "container-articles container-articles";
-        margin: 2px;
+        margin: 5%;
     }
 
     /************************ Logo ************************/
@@ -274,6 +276,7 @@
             "container-main"
             "subscribe-news"
             "container-articles";
+        margin: 2%;
     }
 
     .container-main {
@@ -340,8 +343,9 @@
     }
 
     .article {
-        display: block;
         width: 100%;
+        height: 100vw;
+        margin: 0;
     }
 }
 
@@ -359,5 +363,10 @@
     .container-main .main-image img {
         width: 500px;
         transform: translate(-15%, 0);
+    }
+
+    .article {
+        width: 100%;
+        height: 120vw;
     }
 }
